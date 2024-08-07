@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "name": "mean",
+  "version": "1.0.0",
+  "description": "Mongo, Express, Angular, Node",
+  "main": "ex05_module.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elton",
+  "license": "ISC"
+}

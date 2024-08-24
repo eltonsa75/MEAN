@@ -11,8 +11,8 @@ router.get('/produtos/:id', (req, res) => {
     res.json({id: req.params.id, name: 'Caneta'})
 })
 
-router.get('/clientes/:id', (req, res) => {
-    res.json({id: req.params.id, name: 'João'})
+router.get('/clientes/:id/:name', (req, res) => {
+    res.json({id: req.params.id, name: req.params.name})
 })
 
 module.exports = router

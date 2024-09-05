@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app='app'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Angular</title>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('app', [])
+        angular.module('app').controller('MeuController', [
+            '$scope',
+            function($scope){
+                const self = this
+                self.value = 10
+                self.inc = function() {
+                    self.value++
+                }
+            }
+        ])
+    </script>
+</head>
+<body>
+    <div ng-controller="MeuController as ctrl">
+        <h1>{{ ctrl.value }}</h1>
+        <input ng-model="ctrl.value" /> 
+        <button ng-click="ctrl.inc()">Inc</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app='app'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Angular</title>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('app', [])
+        angular.module('app').directive('meuRelogio', function() {
+            return {
+                restrict: 'AE', 
+                template: `<h2>${new Date}<h2>`
+            }
+        })
+    </script>
+</head>
+<body>
+   <h1>Atributo</h1>
+   <div meu-relogio></div>
+   <meu-relogio></meu-relogio>
+</body>
+</html>

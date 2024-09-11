@@ -1,4 +1,0 @@
-const BillingCycle = require('./billingCycle')
-
-BillingCycle.metthods(['get', 'post', 'put', 'delete'])
-

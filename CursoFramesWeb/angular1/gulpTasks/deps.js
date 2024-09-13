@@ -1,6 +1,6 @@
 const gulp = require('gulp')
-const uglifly = require('gulp-uglify')
-const ugliflycss = require('gulp-uglifycss')
+const uglify = require('gulp-uglify')
+const uglifycss = require('gulp-uglifycss')
 const concat = require('gulp-concat')
 
 
@@ -19,7 +19,7 @@ gulp.task('deps.js', () => {
         'node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
         'node_modules/admin-lte/dist/js/app.min.js'
     ])
-    .pipe(uglifly())
+    .pipe(uglify())
     .pipe(concat('deps.min.js'))
     .pipe(gulp.dest('public/assets/js'))
 })
@@ -31,16 +31,15 @@ gulp.task('deps.css', () => {
         'node_modules/admin-lte/bootstrap/css/bootstrap.min.css',
         'node_modules/admin-lte/dist/css/adminLTE.min.css',
         'node_modules/admin-lte/dist/css/skins/_all-skins.min.css',
-
     ])
-    .pipe(ugliflycss({ "uglyComments": true}))
+    .pipe(uglifycss({ "uglyComments": true}))
     .pipe(concat('deps.min.css'))
     .pipe(gulp.dest('public/assets/css'))
     
 })
 gulp.task('deps.fonts', () => {
     return gulp.src([
-        'node_modules/font-awesine/fonts/*.*',
+        'node_modules/font-awesome/fonts/*.*',
         'node_modules/admin-lte/bootstrap/fonts/*.*'
     ])
     .pipe(gulp.dest('public/assets/fonts'))

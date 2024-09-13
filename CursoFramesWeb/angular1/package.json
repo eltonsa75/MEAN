@@ -29,6 +29,8 @@
     "gulp-watch":"4.3.11",
     "gulp-webserver": "0.9.1",
     "run-sequence": "2.2.0"
-
+  },
+  "overrides": {
+    "graceful-fs": "^4.2.10"
   }
 }

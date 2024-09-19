@@ -1,13 +1,13 @@
 <div role="form">
     <div class="box-body">
-    <field id="name" label="Nome" grid="4" placeholder="Informe o Nome" model="bcCtrl.billingCycle.name"></field>
-    <field id="month" label="Mês" grid="4" placeholder="Informe o Mês" model="bcCtrl.billingCycle.month" type="number"></field>
-    <field id="year" label="Ano" grid="4" placeholder="Informe o Ano" model="bcCtrl.billingCycle.year" type="number"></field>
+    <field id="name" label="Nome" grid="4" placeholder="Informe o Nome" model="bcCtrl.billingCycle.name" readonly="bcCtrl.tabDelete"></field>
+    <field id="month" label="Mês" grid="4" placeholder="Informe o Mês" model="bcCtrl.billingCycle.month" readonly="bcCtrl.tabDelete" type="number"></field>
+    <field id="year" label="Ano" grid="4" placeholder="Informe o Ano" model="bcCtrl.billingCycle.year" readonly="bcCtrl.tabDelete" type="number"></field>
     </div>
     <div class="box-footer">
         <button class="btn btn-primary" ng-click="bcCTRL.create()" ng-if="bcCtrl.tabCreate">Incluir</button>
         <button class="btn btn-info" ng-if="bcCtrl.tabUpdate">Alterar</button>
-        <button class="btn btn-danger" ng-if="bcCtrl.tabDelete">Excluir</button>
+    <button class="btn btn-danger" ng-if="bcCtrl.tabDelete" ng-click="bcCtrl.delete()">Excluir</button>
         <button class="btn btn-dafault" ng-click="bcCtrl.refresh()">Cancelar</button>
     </div>
 </div>

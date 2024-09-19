@@ -56,6 +56,34 @@
                 msgs.addError(data.errors)
             })
         }
+
+        vm.addCredit = function(index) {
+            vm.billingCycle.credits.splice(index + 1, 0, {})
+        }
+
+        vm.cloneCredit = function(index, {name, value}) {
+            vm.billingCycle.credits.splice(index + 1, 0, {name, value})
+        }
+
+        vm.deleteCredit = function(index) {
+            if(vm.billingCycle.credits.length > 1) {
+                vm.billingCycle.credits.splice(index, 1)
+            }
+        }
+
+        vm.addDebt = function(index) {
+            vm.billingCycle.debts.splice(index + 1, 0, {})
+        }
+
+        vm.cloneDebt = function(index, {name, value, status}) {
+            vm.billingCycle.debts.splice(index + 1, 0, {name, value, status})
+        }
+
+        vm.deleteDebt = function(index) {
+            if(vm.billingCycle.debts.length > 1) {
+                vm.billingCycle.debts.splice(index, 1)
+            }
+        }
         vm.refresh()
     }
     })()

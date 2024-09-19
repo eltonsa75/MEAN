@@ -12,6 +12,7 @@
         const url = 'http://localhost:3003/api/billingCycles'
 
         vm.refresh = function() {
+            // Criando a páginação da plataforma
             const page = parseInt($location.search().page) || 1
             $http.get(`${url}?skip=${(page - 1) * 10}&limit=10`).then(function (response) {
                 vm.billingCycle = {credits: [{}], debts: [{}]}
@@ -21,6 +22,7 @@
 
                 $http.get(`${url}/count`).then(function(response) {
                     vm.pages = Math.ceil(response.value / 10 )
+                    
                 })
             })
         }

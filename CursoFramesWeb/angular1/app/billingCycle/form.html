@@ -4,6 +4,18 @@
     <field id="month" label="Mês" grid="4" placeholder="Informe o Mês" model="bcCtrl.billingCycle.month" readonly="bcCtrl.tabDelete" type="number"></field>
     <field id="year" label="Ano" grid="4" placeholder="Informe o Ano" model="bcCtrl.billingCycle.year" readonly="bcCtrl.tabDelete" type="number"></field>
 
+
+        <div class="col-xs-12">
+            <fieldset>
+                <legend>Resumo</legend>
+                <div ng-include="'billingCycle/summary.html'"></div>
+            </fieldset>
+        </div>
+
+
+
+
+
     <div class="col-xs-12 col-sm-6">
         <fieldset>
             <legend>Créditos</legend>

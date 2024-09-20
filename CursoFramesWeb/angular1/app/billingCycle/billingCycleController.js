@@ -35,8 +35,8 @@
                 vm.refresh();
                     msgs.addSuccess('Operação realizada com sucesso!');
                 })
-                .catch(function(error) { // Alterado de .error para .catch
-                    msgs.addError(error.data.errors || 'Ocorreu um erro na operação.')
+                .catch(function(response) { // Alterado de .error para .catch
+                    msgs.addError(response.data.errors || 'Ocorreu um erro na operação.')
                 })
         }
 
@@ -61,8 +61,8 @@
                     vm.refresh();
                     msgs.addSuccess('Operação realizada com sucesso!');
                 })
-                .catch(function(error) { // Alterado de .error para .catch
-                    msgs.addError(error.data.errors || 'Ocorreu um erro na operação.')
+                .catch(function(response) { // Alterado de .error para .catch
+                    msgs.addError(response.data.errors || 'Ocorreu um erro na operação.')
                 })
         }
 
@@ -73,8 +73,8 @@
                 vm.refresh()
                 msgs.addSuccess('Operação realizada com sucesso!')
             })
-            .catch(function(data) {
-                msgs.addError(data.errors || 'Ocorreu um erro na operação.')
+            .catch(function(response) {
+                msgs.addError(response.data.errors || 'Ocorreu um erro na operação.')
             })
         }
 

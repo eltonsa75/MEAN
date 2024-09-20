@@ -21,7 +21,7 @@
                 
                 // Metodo que calcula a páginação
                 $http.get(`${url}/count`).then(function(response) {
-                    vm.pages = Math.ceil(response.value / 10 )
+                    vm.pages = Math.ceil(response.data.value / 3)
                     tabs.show(vm, {tabList: true, tabCreate: true})
                     
                 })

@@ -1,5 +1,4 @@
 const _ = require('lodash')
-const { sum } = require('lodash')
 const BillingCycle = require('../billingCycle/billingCycle')
 
 // Mais uma função middleware

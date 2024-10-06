@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const User = require('./user')
 const env = require('../../.env')
 const user = require('./user')
+const req = require('express/lib/request')
 
 const emailRegex = /\S+@\S+\.\S+/
 const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,12})/
@@ -14,6 +15,7 @@ const sendErrorsFromDB = (res, dbErrors) => {
     return res.status(400).json({errors})
 }
 
+// Método de Login 
 const login = (req, res, next) => {
     const email = req.body.email || ''
     const password = req.body.password || ''
@@ -31,4 +33,35 @@ const login = (req, res, next) => {
             return res.status(400).send({errors: ['Usuário/Senha inválidos']})
         }
     })
+}
+
+// Validação do Token
+const validateToken = (req, res, next) => {
+    const token = req.body.token || ''
+    jwt.verify(token, env.authSecret, function(err, decoded) {
+        return res.status(200).send({valid: !err})
+    })
+}
+
+const signup = (req, res, next) => {
+    const name = req.body.name || ''
+    const email = req.body.email || ''
+    const password = req.body.password || ''
+    const confirmPassword = req.body.confirm_Password || ''
+
+if(!email.match(emailRegex)) {
+   return res.status(400).send({errors: ['O e-mail informado está inválido']})
+}
+
+if(!password.match(passwordRegex)) {
+    return res.status(400).send({errors:[
+        "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6-12."
+    ]})
+}
+
+const salt = bcrypt.gensaltSync()
+const passwordHash = bcrypt.hashSync(password, salt)
+if(!bcrypt.compareSync(confirmPassword, passwordHash)) {
+    return res.status(400).send({errors: [ 'Senha não conferem.']})
+}
 }

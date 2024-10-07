@@ -84,4 +84,4 @@ User.findOne({email}, (err, user) => {
 })
 }
 
-module.exports = { login, signup, validateToken }
+module.exports = { login, signup, validateToken}

@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('./user')
 const env = require('../../.env')
-const user = require('./user')
-const req = require('express/lib/request')
 
 const emailRegex = /\S+@\S+\.\S+/
 const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,12})/
@@ -59,9 +57,31 @@ if(!password.match(passwordRegex)) {
     ]})
 }
 
+// Criptografando a senha
 const salt = bcrypt.gensaltSync()
 const passwordHash = bcrypt.hashSync(password, salt)
 if(!bcrypt.compareSync(confirmPassword, passwordHash)) {
     return res.status(400).send({errors: [ 'Senha não conferem.']})
 }
+
+
+//Verificando se o usuario já está cadastrado
+User.findOne({email}, (err, user) => {
+    if(err) {
+        return sendErrorsFromDB(res, err)
+    } else if(user) {
+        return res.status(400).send({ errors: ['Usuário ja cadastrado.']})
+    } else {
+        const newUser = new User({ name, email, password: passwordHash })
+        newUser.save(err => {
+            if(err) {
+                return sendErrorsFromDB(res, err)
+            } else {
+                login(req, res, next)
+            }
+        })
+    }
+})
 }
+
+module.exports = { login, signup, validateToken }

@@ -1,7 +1,7 @@
 angular.module('primeiraApp').config([
     '$stateProvider',
     '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
+    function($stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider.state('dashboard', {
             url: "/dashboard",
             templateUrl: "dashboard/dashboard.html"
@@ -9,7 +9,9 @@ angular.module('primeiraApp').config([
             url: "/billingCycles?page",
             templateUrl: "billingCycle/tabs.html"
         })
-        
+
+        $httpProvider.interceptors.push('handleResponseError')
+
     }])
     .run([
         '$rootScope',

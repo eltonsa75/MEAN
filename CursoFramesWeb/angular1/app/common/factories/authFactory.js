@@ -38,6 +38,7 @@
         }
 
         function logout(callback) {
+            user = null
             localStorage.removeItem(consts.userKey)
             $http.defaults.headers.common.Authorization = ''
             if (callback) callback(null)
